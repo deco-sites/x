@@ -1,28 +1,9 @@
-import type { ImageWidget } from "apps/admin/widgets.ts";
-import Image from "apps/website/components/Image.tsx";
+import { BlogPost } from "apps/blog/types.ts";
 import { usePartialSection } from "deco/hooks/usePartialSection.ts";
 import { ComponentChildren, Fragment } from "preact";
-import { BlogPost } from "apps/blog/types.ts";
-import { useId } from "../sdk/useId.ts";
-
-export interface CTA {
-  text?: string;
-}
-
-/** @title {{{title}}} */
-export interface Post {
-  url?: string;
-  title?: string;
-  author?: string;
-  excerpt?: string;
-  image?: ImageWidget;
-  date?: string;
-  readingTime?: string;
-  tags?: string[];
-}
+import { useId } from "site/sdk/useId.ts";
 
 export interface Props {
-  cta?: CTA;
   posts?: BlogPost[] | null;
   pagination?: {
     /**
@@ -33,171 +14,27 @@ export interface Props {
     /** @title items per page */
     perPage?: number;
   };
-} 
-
-const DEFAULT_IMAGE =
-  "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/4763/682eb374-def2-4e85-a45d-b3a7ff8a31a9";
+}
 
 function Container({ children }: { children: ComponentChildren }) {
   return (
-    <div class="container lg:mx-auto lg:py-14 mx-2 py-12 text-sm">
-      <div class="space-y-8">{children}</div>
+    <div class="container px-3 text-sm">
+      {children}
     </div>
   );
 }
 
 export default function BlogPosts({
-  cta = { text: "Show more" },
-  posts = [
-    {
-      slug: "/",
-      title: "Title of blogpost #1",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #2",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #3",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #4",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #5",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #6",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #7",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #8",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #9",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #10",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #11",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #12",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-    {
-      slug: "/",
-      title: "Title of blogpost #13",
-      authors: [{ name: "Name of the author", email: "author@deco.cx" }],
-      excerpt:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.",
-      image: DEFAULT_IMAGE,
-      date: "01 Apr 2024",
-      categories: [{ name: "Tag#1", slug: "tag-1" }],
-      content: "Blog Post Content"
-    },
-  ],
-  pagination: {
-    page = 0,
-    perPage = 6,
-  } = {},
+  posts,
+  pagination,
 }: Props) {
+  if (!posts) return <></>;
+
+  const {
+    perPage = 50,
+    page = 0,
+  } = pagination ?? {};
+
   const from = perPage * page;
   const to = perPage * (page + 1);
 
@@ -213,80 +50,46 @@ export default function BlogPosts({
     },
   })["f-partial"];
 
-  function calculateReadingTime(words: number): string {
-    const wordsPerMinute = 250;
-    const estimatedTimeMinutes = words / wordsPerMinute;
-
-    const roundedReadingTime = Math.round(estimatedTimeMinutes);
-    return `${roundedReadingTime} min`;
-  }
-
   const ContainerComponent = page === 0 ? Container : Fragment;
 
   return (
     <ContainerComponent>
-      <>
-        <div class="gap-8 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
-          {posts.slice(from, to).map((post) => (
+      <ul class="flex flex-col">
+        {posts.slice(from, to).map((post) => (
+          <li>
             <a
               href={`/blog/${post.slug}`}
-              class="border border-secondary overflow-hidden rounded-lg"
+              class="flex gap-3 items-center justify-between"
             >
-              <Image
-                width={380}
-                height={274}
-                class="object-fit w-full"
-                sizes="(max-width: 640px) 100vw, 30vw"
-                src={post.image || ""}
-                alt={post.image}
-                decoding="async"
-                loading="lazy"
-              />
-              <div class="p-6 space-y-4">
-                <div class="font-semibold">{calculateReadingTime(post.content.split(" ").length)}</div>
-                <div class="space-y-2">
-                  <h3 class="text-2xl">{post.title}</h3>
-                  <p class="text-base">{post.excerpt}</p>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  {post.categories?.map((category) => (
-                    <div class="badge badge-lg badge-primary text-xs">
-                      {category.name}
-                    </div>
-                  ))}
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span>{post.date
-                    ? new Date(post.date).toLocaleDateString("en-US", {
-                      month: "long",
-                      day: "numeric",
-                      year: "numeric",
-                    })
-                    : ""}</span>
-                  <span>•</span>
-                  <span>{post.authors[0]?.name}</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-        {to < posts.length && (
-          <div class="flex justify-center w-full" id={postList}>
-            <button
-              hx-get={fetchMoreLink}
-              hx-swap="outerHTML"
-              hx-target={`#${postList}`}
-              aria-label={cta.text}
-              class="btn btn-primary"
-            >
-              <span class="inline [.htmx-request_&]:hidden">
-                {cta.text}
+              <h3 class="line-clamp-1">{post.title}</h3>
+              <span class="flex gap-3 items-center shrink-0">
+                {post.date
+                  ? new Date(post.date).toLocaleDateString("pt-BR", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })
+                  : ""}
               </span>
-              <span class="loading loading-spinner hidden [.htmx-request_&]:block" />
-            </button>
-          </div>
-        )}
-      </>
+            </a>
+          </li>
+        ))}
+      </ul>
+      {to < posts.length && (
+        <div class="flex justify-center w-full" id={postList}>
+          <button
+            hx-get={fetchMoreLink}
+            hx-swap="outerHTML"
+            hx-target={`#${postList}`}
+            class="btn btn-primary"
+          >
+            <span class="inline [.htmx-request_&]:hidden">
+              Ver mais
+            </span>
+            <span class="loading loading-spinner hidden [.htmx-request_&]:block" />
+          </button>
+        </div>
+      )}
     </ContainerComponent>
   );
 }

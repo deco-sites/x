@@ -4,31 +4,29 @@
 
 import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
 import * as $$$$$$$$$$$1 from "./apps/site.ts";
+import * as $$$0 from "./loaders/availableIcons.ts";
 import * as $$$$$$0 from "./sections/BlogPost.tsx";
 import * as $$$$$$1 from "./sections/BlogPosts.tsx";
-import * as $$$$$$2 from "./sections/Faq.tsx";
-import * as $$$$$$3 from "./sections/Footer.tsx";
-import * as $$$$$$4 from "./sections/Header.tsx";
-import * as $$$$$$5 from "./sections/Hero.tsx";
-import * as $$$$$$6 from "./sections/ImageWithParagraph.tsx";
-import * as $$$$$$7 from "./sections/Logos.tsx";
-import * as $$$$$$8 from "./sections/MainPost.tsx";
-import * as $$$$$$9 from "./sections/Testimonials.tsx";
-import * as $$$$$$10 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$2 from "./sections/Header.tsx";
+import * as $$$$$$3 from "./sections/ImageWithParagraph.tsx";
+import * as $$$$$$4 from "./sections/Logos.tsx";
+import * as $$$$$$5 from "./sections/MainPost.tsx";
+import * as $$$$$$6 from "./sections/Testimonials.tsx";
+import * as $$$$$$7 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
+  "loaders": {
+    "site/loaders/availableIcons.ts": $$$0,
+  },
   "sections": {
     "site/sections/BlogPost.tsx": $$$$$$0,
     "site/sections/BlogPosts.tsx": $$$$$$1,
-    "site/sections/Faq.tsx": $$$$$$2,
-    "site/sections/Footer.tsx": $$$$$$3,
-    "site/sections/Header.tsx": $$$$$$4,
-    "site/sections/Hero.tsx": $$$$$$5,
-    "site/sections/ImageWithParagraph.tsx": $$$$$$6,
-    "site/sections/Logos.tsx": $$$$$$7,
-    "site/sections/MainPost.tsx": $$$$$$8,
-    "site/sections/Testimonials.tsx": $$$$$$9,
-    "site/sections/Theme/Theme.tsx": $$$$$$10,
+    "site/sections/Header.tsx": $$$$$$2,
+    "site/sections/ImageWithParagraph.tsx": $$$$$$3,
+    "site/sections/Logos.tsx": $$$$$$4,
+    "site/sections/MainPost.tsx": $$$$$$5,
+    "site/sections/Testimonials.tsx": $$$$$$6,
+    "site/sections/Theme/Theme.tsx": $$$$$$7,
   },
   "apps": {
     "site/apps/decohub.ts": $$$$$$$$$$$0,
