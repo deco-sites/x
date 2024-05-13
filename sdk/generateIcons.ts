@@ -4,7 +4,6 @@ const outputFilePath = "static/adminIcons.ts";
 async function generateIconsFile() {
   const svgContent = await Deno.readTextFile(svgFilePath);
   let existingContent = "";
-  const existingIcons = new Set();
   const newIcons = [];
 
   const regex = /<symbol(.+?)id="([^"]+)"([^>]?)>(.+?)<\/symbol>/gs;
@@ -12,12 +11,11 @@ async function generateIconsFile() {
   while ((matchSymbol = regex.exec(svgContent)) !== null) {
     const [_, beforeAttributes, id, afterAttributes, content] = matchSymbol;
     // Adds only new icons
-    if (!existingIcons.has(id)) {
-      newIcons.push(id);
-      const iconString =
-        `export const ${id} = \`<svg id="${id}"${afterAttributes}${beforeAttributes}>${content}</svg>\`;\n`;
-      existingContent += iconString;
-    }
+    newIcons.push(id.replaceAll("-", ""));
+    const iconString = `export const ${
+      id.replaceAll("-", "")
+    } = \`<svg id="${id}"${afterAttributes}${beforeAttributes}>${content}</svg>\`;\n`;
+    existingContent += iconString;
   }
 
   // If there are new icons, update AvailableIcons and the file
@@ -28,7 +26,7 @@ async function generateIconsFile() {
       "",
     );
     // Adds all existing icons plus the new ones to the AvailableIcons constant
-    const allIconsFiltered = [...existingIcons, ...newIcons].filter((icon) =>
+    const allIconsFiltered = newIcons.filter((icon) =>
       icon !== "AvailableIcons"
     );
     const availableIconsString = `export const AvailableIcons = { ${
