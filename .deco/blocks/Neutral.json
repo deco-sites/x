@@ -27,6 +27,12 @@
   },
   "font": {
     "__resolveType": "website/loaders/fonts/googleFonts.ts",
-    "fonts": [{ "variations": [], "family": "Albert Sans" }]
-  }
+    "fonts": [
+      {
+        "variations": [],
+        "family": "Albert Sans"
+      }
+    ]
+  },
+  "mode": "dark"
 }

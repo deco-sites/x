@@ -11,8 +11,9 @@
     "type": "website",
     "title": "Blog",
     "description": "Improve your page performance with deco.cx",
-    "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/5018/c8188deb-9ed0-4394-8ede-af8fb4263ba4",
-    "favicon": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/5018/71c97b9c-b94a-4cf5-8120-4bb7b99b21bb"
+    "favicon": "https://assets.decocache.com/x/ce323d55-5f79-4168-84b9-37bbfcfa1cf7/freepik_my_creation_20250318_234335-removebg-preview.webp",
+    "image": "https://assets.decocache.com/x/ce323d55-5f79-4168-84b9-37bbfcfa1cf7/freepik_my_creation_20250318_234335-removebg-preview.webp",
+    "themeColor": "dark"
   },
   "global": [
     {
